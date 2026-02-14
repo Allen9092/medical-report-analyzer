@@ -1,61 +1,52 @@
 # Medical Report Analyzer - Quick Start Guide
 
-## 🚀 How to Use
+This project features a modern FastAPI backend and a React frontend for analyzing medical reports.
 
-### Method 1: Interactive Menu (Easiest)
+## 🚀 Getting Started
+
+### 1. Prerequisites
+Ensure you have Python 3.9+ and Node.js installed.
+
+### 2. Setup
+Install all Python dependencies from the root directory:
 ```bash
-python src/main.py
+pip install -r requirements.txt
+python -m spacy download en_core_web_sm
 ```
-Then choose from the menu:
-- Option 1: Use sample report
-- Option 2: Load from a file
-- Option 3: Paste text directly
 
-### Method 2: Command Line
+### 3. Run the Application
+
+#### **Backend (FastAPI)**
 ```bash
-# Analyze a specific file
-python src/main.py --file path/to/your/report.txt
+cd backend
+python app/main.py
+```
+The API will be available at `http://localhost:8000`.
 
-# Use sample report
-python src/main.py --sample
+#### **Frontend (React)**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+The dashboard will be available at `http://localhost:5173` (or similar).
 
-# Interactive paste mode
-python src/main.py --interactive
+---
+
+## 🛠️ Alternative Interfaces
+
+### Streamlit Web UI
+If you prefer a simpler, all-in-one Python web interface:
+```bash
+streamlit run backend/app/app.py
 ```
 
-## 📝 Supported Report Formats
+---
 
-The analyzer works with **ANY text format**:
-- ✅ Structured medical reports
-- ✅ Clinical notes
-- ✅ Lab results printouts
-- ✅ Doctor's notes
-- ✅ Plain text descriptions
+## 🔍 Features
+- **PDF & Text Support**: Extract data from medical PDFs or plain text.
+- **Disease & Symptom Detection**: Advanced NLP to identify medical conditions.
+- **Lab Value Validation**: Automatic flagging of High/Low lab results.
+- **Inference Engine**: Deduced diagnoses based on lab abnormalities.
 
-## 🔍 What It Detects
-
-- **50+ Diseases**: diabetes, hypertension, heart disease, cancer, etc.
-- **40+ Symptoms**: fatigue, pain, fever, dizziness, etc.
-- **Lab Values**: blood sugar, cholesterol, blood pressure, HbA1c, vitals, etc.
-
-## 📊 Example Output
-
-```
-╔══════════════════════════════════════════════════════════╗
-║               PATIENT REPORT SUMMARY                     ║
-╚══════════════════════════════════════════════════════════╝
-
-🏥 POSSIBLE DIAGNOSES:
-   Hypertension, Coronary Artery Disease, Angina
-
-📋 SYMPTOMS OBSERVED:
-   Fatigue, Chest Pain, Shortness Of Breath
-
-🔬 LABORATORY VALUES:
-   • Blood Pressure: 160/95
-   • Total Cholesterol: 245 mg/dL
-   • LDL Cholesterol: 165 mg/dL
-   • Heart Rate: 92 bpm
-```
-
-Results are saved to: `output/analysis_results.txt`
+Results are also automatically logged to `output/analysis_results.txt`.
